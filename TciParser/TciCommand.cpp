@@ -213,7 +213,7 @@ void TciCommandIf::currentStatus(int trx, int channel)
                     emit message(command(i, j));
             }
             else {
-                if (channel < m_control.channelsCount())
+                if (channel < (int) m_control.channelsCount())
                     emit message(command(i, channel));
             }
         }
@@ -225,7 +225,7 @@ void TciCommandIf::currentStatus(int trx, int channel)
                     emit message(command(trx, j));
             }
             else {
-                if (channel < m_control.channelsCount())
+                if (channel < (int) m_control.channelsCount())
                     emit message(command(trx, channel));
             }
         }
@@ -581,7 +581,7 @@ void TciCommandModulation::currentStatus(int trx)
             emit message(QStringLiteral("modulation:") + QString::number(i) + "," + m_control.modulation(i) + ";");
     }
     else {
-        if (m_control.trxCount() > trx)
+        if ((int) m_control.trxCount() > trx)
             emit message(QStringLiteral("modulation:") + QString::number(trx) + "," + m_control.modulation(trx) + ";");
     }
 }
@@ -743,7 +743,7 @@ void TciCommandIqStart::onStatus(int trx)
                 emit message(QStringLiteral("iq_start:") + QString::number(i) + ";");
     }
     else {
-        if (trx < m_control.trxCount()) {
+        if (trx < (int) m_control.trxCount()) {
             if (m_control.iqStart(trx))
                 emit message(QStringLiteral("iq_start:") + QString::number(trx) + ";");
         }
@@ -806,7 +806,7 @@ void TciCommandIqStop::onStatus(int trx)
                 emit message(QStringLiteral("iq_stop:") + QString::number(i) + ";");
     }
     else {
-        if (trx < m_control.trxCount()) {
+        if (trx < (int) m_control.trxCount()) {
             if (!m_control.iqStart(trx))
                 emit message(QStringLiteral("iq_stop:") + QString::number(trx) + ";");
         }
@@ -847,7 +847,7 @@ void TciCommandAudioStart::currentStatus(int trx)
         }
     }
     else {
-        if (trx < m_control.trxCount()) {
+        if (trx < (int) m_control.trxCount()) {
             if (m_control.audioStart(trx))
                 emit message(QStringLiteral("audio_start:") + QString::number(trx) + ";");
         }
@@ -888,7 +888,7 @@ void TciCommandAudioStop::currentStatus(int trx)
         }
     }
     else {
-        if (trx < m_control.trxCount()) {
+        if (trx < (int) m_control.trxCount()) {
             if (!m_control.audioStart(trx))
                 emit message(QStringLiteral("audio_stop:") + QString::number(trx) + ";");
         }
@@ -1722,7 +1722,7 @@ void TciCommandRxChannelEnable::currentStatus(int trx, int channel)
                     emit message(command(i, j));
             }
             else {
-                if (channel < m_control.channelsCount())
+                if (channel < (int) m_control.channelsCount())
                     emit message(command(i, channel));
             }
         }
@@ -1734,7 +1734,7 @@ void TciCommandRxChannelEnable::currentStatus(int trx, int channel)
                     emit message(command(trx, j));
             }
             else {
-                if (channel < m_control.channelsCount())
+                if (channel < (int) m_control.channelsCount())
                     emit message(command(trx, channel));
             }
         }
@@ -2141,7 +2141,7 @@ void TciCommandVfo::currentStatus(int trx, int channel)
                     emit message(command(i, j));
             }
             else {
-                if (channel < m_control.channelsCount())
+                if (channel < (int) m_control.channelsCount())
                     emit message(command(i, channel));
             }
         }
@@ -2153,7 +2153,7 @@ void TciCommandVfo::currentStatus(int trx, int channel)
                     emit message(command(trx, j));
             }
             else {
-                if (channel < m_control.channelsCount())
+                if (channel < (int) m_control.channelsCount())
                     emit message(command(trx, channel));
             }
         }
