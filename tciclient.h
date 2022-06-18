@@ -10,6 +10,7 @@
 #include "TciTrxState/TciTrxState.h"
 #include "TciParser/TciParser.h"
 #include "TciParser/TciCommand.h"
+#include <QtQml/qqmlregistration.h>
 
 typedef float REAL;
 
@@ -24,6 +25,7 @@ namespace ExpertElectronics {
 class TciClient final : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
     static constexpr quint32 IqHeaderSize = 16u*sizeof(quint32);
     static constexpr quint32 IqBufferSize = 2048u;
@@ -63,11 +65,11 @@ public:
     explicit TciClient(QObject *parent = nullptr);
     ~TciClient();
 
-    void open(const QUrl &url);
-    void close();
-    bool isOpen() const;
+    Q_INVOKABLE void open(const QUrl &url);
+    Q_INVOKABLE void close();
+    Q_INVOKABLE bool isOpen() const;
 
-    TciTrxState& trxState();
+    Q_INVOKABLE ExpertElectronics::TciTrxState& trxState();
 
     QVector<COMPLEX> iqData() const;
     QVector<COMPLEX> audioData() const;

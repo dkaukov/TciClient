@@ -1,4 +1,7 @@
-QT += core network websockets
+QT += core websockets qml
+
+QML_IMPORT_NAME = com.expertelectronics.tci
+QML_IMPORT_MAJOR_VERSION = 1
 
 TEMPLATE = lib
 

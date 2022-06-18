@@ -8,61 +8,63 @@
 #include <QtCore>
 #include <QColor>
 #include <atomic>
+#include <QtQml/qqmlregistration.h>
 
 namespace ExpertElectronics {
 
 class TciTrxState : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     explicit TciTrxState(QObject *parent = nullptr);
 
-    void setTrxCount(quint32 value);
-    quint32 trxCount() const;
+    Q_INVOKABLE void setTrxCount(quint32 value);
+    Q_INVOKABLE quint32 trxCount() const;
 
-    void setChannelsCount(quint32 value);
-    quint32 channelsCount() const;
+    Q_INVOKABLE void setChannelsCount(quint32 value);
+    Q_INVOKABLE quint32 channelsCount() const;
 
-    void setVfoLimits(quint64 min, quint64 max);
-    qint64 vfoMin() const;
-    qint64 vfoMax() const;
+    Q_INVOKABLE void setVfoLimits(quint64 min, quint64 max);
+    Q_INVOKABLE qint64 vfoMin() const;
+    Q_INVOKABLE qint64 vfoMax() const;
 
-    void setIfLimits(int min, int max);
-    qint64 ifMin() const;
-    qint64 ifMax() const;
+    Q_INVOKABLE void setIfLimits(int min, int max);
+    Q_INVOKABLE qint64 ifMin() const;
+    Q_INVOKABLE qint64 ifMax() const;
 
-    void setModulationsList(const QStringList &list);
-    QStringList modulationsList() const;
+    Q_INVOKABLE void setModulationsList(const QStringList &list);
+    Q_INVOKABLE QStringList modulationsList() const;
 
-    void setIqOutSampleRate(quint32 value);
-    quint32 iqOutSampleRate() const;
+    Q_INVOKABLE void setIqOutSampleRate(quint32 value);
+    Q_INVOKABLE quint32 iqOutSampleRate() const;
 
-    void setAudioSampleRate(quint32 value);
-    quint32 audioSampleRate() const;
+    Q_INVOKABLE void setAudioSampleRate(quint32 value);
+    Q_INVOKABLE quint32 audioSampleRate() const;
 
-    void setAudioStart(quint32 trx, bool state);
-    bool audioStart(quint32 trx) const;
+    Q_INVOKABLE void setAudioStart(quint32 trx, bool state);
+    Q_INVOKABLE bool audioStart(quint32 trx) const;
 
-    void setIqStart(quint32 trx, bool state);
-    bool iqStart(quint32 trx) const;
+    Q_INVOKABLE void setIqStart(quint32 trx, bool state);
+    Q_INVOKABLE bool iqStart(quint32 trx) const;
 
-    quint32 cwSpeed() const noexcept;
-    quint32 cwMacrosDelay() const noexcept;
+    Q_INVOKABLE quint32 cwSpeed() const noexcept;
+    Q_INVOKABLE quint32 cwMacrosDelay() const noexcept;
 
-    bool ritEnable(quint32 trx) const;
-    bool xitEnable(quint32 trx) const;
-    bool splitEnable(quint32 trx) const;
-    int ritOffset(quint32 trx) const;
-    int xitOffset(quint32 trx) const;
+    Q_INVOKABLE bool ritEnable(quint32 trx) const;
+    Q_INVOKABLE bool xitEnable(quint32 trx) const;
+    Q_INVOKABLE bool splitEnable(quint32 trx) const;
+    Q_INVOKABLE int ritOffset(quint32 trx) const;
+    Q_INVOKABLE int xitOffset(quint32 trx) const;
 
-     bool sqlEnable(quint32 trx) const;
-     int sqlLevel(quint32 trx) const;
+    Q_INVOKABLE bool sqlEnable(quint32 trx) const;
+    Q_INVOKABLE int sqlLevel(quint32 trx) const;
 
-    bool channelEnable(quint32 trx, quint32 channel) const;
-    bool rxFilter(quint32 trx, int &low, int &high);
+    Q_INVOKABLE bool channelEnable(quint32 trx, quint32 channel) const;
+    Q_INVOKABLE bool rxFilter(quint32 trx, int &low, int &high);
 
-    int volume() const;
+    Q_INVOKABLE int volume() const;
 
 public slots:
     void setRxEnable(quint32 trx, bool state);
