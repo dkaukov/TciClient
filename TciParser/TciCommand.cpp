@@ -2164,11 +2164,6 @@ QString TciCommandVfo::command(int trx, int channel)
     return QStringLiteral("vfo:%1,%2,%3;").arg(trx).arg(channel).arg(static_cast<qint64>(m_control.vfo(trx, channel)));
 }
 
-
-
-
-
-
 }  // namespace ExpertElectronics
 
 
